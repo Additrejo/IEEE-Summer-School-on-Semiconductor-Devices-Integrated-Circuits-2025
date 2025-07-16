@@ -5,6 +5,24 @@ Este repositorio contiene un ejemplo desarrollado durante mi capacitación en **
 
 Silvaco es una herramienta profesional para la **simulación de procesos y dispositivos semiconductores**, ampliamente utilizada en la industria electrónica, investigación académica y diseño de tecnología avanzada. Permite modelar y predecir fenómenos como oxidación, difusión, implantación iónica, comportamiento de dispositivos MOSFET, diodos y más.
 
+## Requisitos
+
+Hacer una cuenta en nanohub.com
+[Nanohub](https://nanohub.org/tools/silvacotcad/session?sess=2673896)   
+
+### Silvaco TCAD ejecución
+Una vez registrado e iniciada la sesión dirigirse a  
+   - Explore > Tools
+   - En la barra de busqueda escribir: **Silvaco TCAD** o dirigirse a la siguiente dirección: [Silvaco TCAD Tool](https://nanohub.org/resources/silvacotcad)
+   -  Dar click en Launch Tool  
+  <img width="773" height="243" alt="image" src="https://github.com/user-attachments/assets/f3fafc2f-891e-4ce0-a4ee-896cc4b69ce0" />
+
+**Silvaco TCAD Ventana**  
+   - Una vez abierto elegir el Deckbuild.
+   <img width="963" height="571" alt="image" src="https://github.com/user-attachments/assets/f62d8ed6-af13-4eae-9cf8-dbe20dd7be65" />
+
+Todo está listo para empezar a trabajar.
+
 ---
 
 # [Simulación de Oxidación Dependiente del Dopado - Silvaco TCAD](https://github.com/Additrejo/IEEE-Summer-School-on-Semiconductor-Devices-Integrated-Circuits-2025/blob/main/Introduction%20to%20Silvaco%20TCAD/Silvaco_Doping_dependent_oxidation.in)  
