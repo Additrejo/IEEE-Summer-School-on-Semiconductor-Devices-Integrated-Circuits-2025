@@ -5,6 +5,17 @@ Este repositorio contiene un ejemplo desarrollado durante mi capacitación en **
 
 Silvaco es una herramienta profesional para la **simulación de procesos y dispositivos semiconductores**, ampliamente utilizada en la industria electrónica, investigación académica y diseño de tecnología avanzada. Permite modelar y predecir fenómenos como oxidación, difusión, implantación iónica, comportamiento de dispositivos MOSFET, diodos y más.
 
+---
+## 📑 Índice
+
+- [Introducing to Silvaco](https://github.com/Additrejo/IEEE-Summer-School-on-Semiconductor-Devices-Integrated-Circuits-2025/tree/main/Introduction%20to%20Silvaco%20TCAD)  
+- [Requisitos](#requisitos)
+- [Simulación de Oxidación Dependiente del Dopado](#-simulacion-de-oxidacion-dependiente-del-dopado)  
+- [Caracterización de un dispositivo CMOS de 55nm](#-caracterización-de-un-dispositivo-cmos-de-55nm)
+- [RIE Trench](#-caracterización-de-un-dispositivo-cmos-de-55nm)
+
+---
+
 ## Requisitos
 
 Hacer una cuenta en nanohub.com
@@ -25,7 +36,7 @@ Todo está listo para empezar a trabajar.
 
 ---
 
-# [Simulación de Oxidación Dependiente del Dopado - Silvaco TCAD](https://github.com/Additrejo/IEEE-Summer-School-on-Semiconductor-Devices-Integrated-Circuits-2025/blob/main/Introduction%20to%20Silvaco%20TCAD/Silvaco_Doping_dependent_oxidation.in)  
+# [Simulación de Oxidación Dependiente del Dopado](https://github.com/Additrejo/IEEE-Summer-School-on-Semiconductor-Devices-Integrated-Circuits-2025/blob/main/Introduction%20to%20Silvaco%20TCAD/Silvaco_Doping_dependent_oxidation.tcl)  
 
 <img width="742" height="247" alt="image" src="https://github.com/user-attachments/assets/7742498d-89b6-4d35-b751-015b5831b530" />
 
@@ -165,3 +176,51 @@ También afecta la redistribución del dopante.
 En esta ejemplo la temperatura de oxidación fue aumenada a **temperature=1200** 
 
 ---
+
+
+# [Caracterización de un dispositivo CMOS de 55nm](https://github.com/Additrejo/IEEE-Summer-School-on-Semiconductor-Devices-Integrated-Circuits-2025/blob/main/Introduction%20to%20Silvaco%20TCAD/Caracterizacion_CMOS_5nm.tcl)  
+<img width="714" height="253" alt="image" src="https://github.com/user-attachments/assets/e73fe9ea-d53d-48d5-85a4-549b1d4fe3e3" />
+
+Este código es un script completo de simulación TCAD (Technology Computer-Aided Design) utilizando el software Silvaco para caracterizar un dispositivo CMOS de 55nm. Su propósito principal es:
+
+**1.Simulación del Proceso de Fabricación:**  
+-Modela todas las etapas de fabricación del transistor (pozos, óxido de puerta, LDD, espaciadores, etc.).  
+-Incluye implantes iónicos, deposiciones y procesos térmicos.  
+-Simula sólo la mitad del dispositivo (por simetría) para ahorrar tiempo.  
+
+**2.Simulación Eléctrica:**  
+-Caracteriza las propiedades eléctricas del transistor.  
+-Realiza barridos de voltaje Vg (compuerta) y Vd (drenaje).  
+-Evalúa tanto la región lineal como de saturación.  
+
+**3.Extracción de Parámetros Clave:**  
+-Voltajes de umbral (Vtlin, Vtsat, Vtgm).
+-Corrientes (Idlin, Idsat, Idoff).
+-Efectos de cortocanal (DIBL - Drain Induced Barrier Lowering).  
+-Movilidad de portadores.  
+
+**4.Análisis y Visualización:**  
+-Genera archivos de resultados para visualización.  
+-Proporciona datos para calibrar el proceso de fabricación.  
+
+### [Código para la Caracterización de un dispositivo CMOS de 55nm.](https://github.com/Additrejo/IEEE-Summer-School-on-Semiconductor-Devices-Integrated-Circuits-2025/blob/main/Introduction%20to%20Silvaco%20TCAD/Caracterizacion_CMOS_5nm.tcl)   
+
+<img width="594" height="532" alt="image" src="https://github.com/user-attachments/assets/efe57cc4-3afa-4494-8b6b-ad1680f20512" />   
+
+El flujo completo incluye:  
+-Inicialización de la estructura.  
+-Formación de pozos (Well).  
+-Crecimiento de óxido (GOX1 y GOX2).  
+-Formación de la puerta polisilicio (Poly).  
+-Implantes LDD (Lightly Doped Drain).  
+-Formación de espaciadores (Spacer).  
+-Implantes de fuente/drenaje (SD).  
+-Contactos metálicos.  
+-Simulación eléctrica con varios modelos físicos.  
+-Extracción automática de parámetros.  
+
+---
+
+# [Rie Trench](https://github.com/Additrejo/IEEE-Summer-School-on-Semiconductor-Devices-Integrated-Circuits-2025/blob/main/Introduction%20to%20Silvaco%20TCAD/RIE_Trench.tcl)  
+
+<img width="439" height="286" alt="image" src="https://github.com/user-attachments/assets/3065c64e-68c0-42c5-bde2-57cf9c978dc3" />
