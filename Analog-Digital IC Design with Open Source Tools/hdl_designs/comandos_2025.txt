@@ -1,0 +1,71 @@
+Documentación: https://github.com/efabless/openlane2
+
+-------------------Inicializar sistema ------------------------------------------
+*Inicializar docker en la carpeta personal:
+source start_sky130
+
+------------------ Simulación --------------------------------------
+*Moverse a la carpeta de diseño:
+cd /foss/designs/
+
+*Crear carpeta nueva con
+mkdir hdl_designs
+
+*Agregar los archivos:
+**contador.sdc
+**contador.v
+**count_tb.v
+**simu_linux.sh
+
+*Simular diseño:
+iverilog -o count_tb.vvp count_tb.v
+vvp count_tb.vvp
+gtkwave count_tb.vcd
+
+*Simular diseño con script:
+./simu_linux.sh count_tb -v &
+
+---------------------Síntesis------------------------------
+*Dentro de la carpeta hdl_designs crear el script JSON de configuración
+
+gedit counter.json
+
+*Agregar los siguiente:
+
+{
+    "DESIGN_NAME": "counter",
+    "VERILOG_FILES": "contador.v",
+    "CLOCK_PORT": "clk",
+    "CLOCK_PERIOD": 10.0,
+    "CLOCK_NET": "clk",
+    "PL_RANDOM_INITIAL_PLACEMENT":1,
+    "DIE_AREA": "0 0 160 100",
+    "FP_CORE_UTIL": 75,
+     "MAX_FANOUT_CONSTRAINT": 5,
+    "FP_SIZING" : "absolute",
+    "BASE_SDC_FILE": "contador.sdc",
+    "FP_PDN_MULTILAYER": true
+
+}
+ 
+openlane --flow Classic counter.json
+
+-----------------Analizar resultados--------------------------
+*Ir a los resultados con
+cd runs/RUN_2505_xxxxx
+
+*Ver diseño sintetizado
+gedit 06-yosys-synthesis/counter.nl.v&
+gedit 06-yosys-synthesis/yosys-synthesis.log&
+
+*Ver timings
+cat 12-openroad-staprepnr/summary.rpt
+
+*Ver el diseño final:
+cd final
+
+klayout
+
+*Abrir el archivo counter.klayout.gds dentro de la carpeta klayout_gds
+
+
