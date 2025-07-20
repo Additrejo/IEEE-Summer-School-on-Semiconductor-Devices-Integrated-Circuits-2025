@@ -12,7 +12,7 @@ Silvaco es una herramienta profesional para la **simulación de procesos y dispo
 - [Requisitos](#requisitos)
 - [Simulación de Oxidación Dependiente del Dopado](#-simulacion-de-oxidacion-dependiente-del-dopado)  
 - [Caracterización de un dispositivo CMOS de 55nm](#-caracterización-de-un-dispositivo-cmos-de-55nm)
-- [RIE Trench](#-caracterización-de-un-dispositivo-cmos-de-55nm)
+- [Rie Trench Modeling](#-rie-trench-modeling)
 
 ---
 
@@ -181,7 +181,8 @@ En esta ejemplo la temperatura de oxidación fue aumenada a **temperature=1200**
 # [Caracterización de un dispositivo CMOS de 55nm](https://github.com/Additrejo/IEEE-Summer-School-on-Semiconductor-Devices-Integrated-Circuits-2025/blob/main/Introduction%20to%20Silvaco%20TCAD/Caracterizacion_CMOS_5nm.tcl)  
 <img width="714" height="253" alt="image" src="https://github.com/user-attachments/assets/e73fe9ea-d53d-48d5-85a4-549b1d4fe3e3" />
 
-Este código es un script completo de simulación TCAD (Technology Computer-Aided Design) utilizando el software Silvaco para caracterizar un dispositivo CMOS de 55nm. Su propósito principal es:
+Este [código](https://github.com/Additrejo/IEEE-Summer-School-on-Semiconductor-Devices-Integrated-Circuits-2025/blob/main/Introduction%20to%20Silvaco%20TCAD/Caracterizacion_CMOS_5nm.tcl)  
+es un script completo de simulación TCAD (Technology Computer-Aided Design) utilizando el software Silvaco para caracterizar un dispositivo CMOS de 55nm. Su propósito principal es:
 
 **1.Simulación del Proceso de Fabricación:**  
 -Modela todas las etapas de fabricación del transistor (pozos, óxido de puerta, LDD, espaciadores, etc.).  
@@ -202,9 +203,7 @@ Este código es un script completo de simulación TCAD (Technology Computer-Aide
 **4.Análisis y Visualización:**  
 -Genera archivos de resultados para visualización.  
 -Proporciona datos para calibrar el proceso de fabricación.  
-
-### [Código para la Caracterización de un dispositivo CMOS de 55nm.](https://github.com/Additrejo/IEEE-Summer-School-on-Semiconductor-Devices-Integrated-Circuits-2025/blob/main/Introduction%20to%20Silvaco%20TCAD/Caracterizacion_CMOS_5nm.tcl)   
-
+   
 <img width="594" height="532" alt="image" src="https://github.com/user-attachments/assets/efe57cc4-3afa-4494-8b6b-ad1680f20512" />   
 
 El flujo completo incluye:  
@@ -221,6 +220,180 @@ El flujo completo incluye:
 
 ---
 
-# [Rie Trench](https://github.com/Additrejo/IEEE-Summer-School-on-Semiconductor-Devices-Integrated-Circuits-2025/blob/main/Introduction%20to%20Silvaco%20TCAD/RIE_Trench.tcl)  
+# [Rie Trench Modeling](https://github.com/Additrejo/IEEE-Summer-School-on-Semiconductor-Devices-Integrated-Circuits-2025/blob/main/Introduction%20to%20Silvaco%20TCAD/RIE_Trench.tcl)  
+<img width="701" height="391" alt="image" src="https://github.com/user-attachments/assets/1614a5ee-e8b4-4d96-b840-4090115ea796" />
 
-<img width="439" height="286" alt="image" src="https://github.com/user-attachments/assets/3065c64e-68c0-42c5-bde2-57cf9c978dc3" />
+
+Este [código](https://github.com/Additrejo/IEEE-Summer-School-on-Semiconductor-Devices-Integrated-Circuits-2025/blob/main/Introduction%20to%20Silvaco%20TCAD/RIE_Trench.tcl)   utiliza el software SILVACO (específicamente los módulos Victory Mesh y Victory Visual) para crear un modelo 3D de una estructura de zanja creada mediante grabado iónico reactivo (RIE - Reactive Ion Etching), que es una técnica común en fabricación de semiconductores.
+
+El código utiliza los módulos **Victory Mesh** y **Victory Visual** de SILVACO para:
+
+1. Crear una estructura base de silicio
+2. Generar perfiles elipsoidales concéntricos (polymer y sio2)
+3. Modelar el característico perfil "scalloped" de grabados RIE
+4. Replicar el patrón para formar una zanja completa
+5. Refinar la malla y añadir dopaje
+
+## 🛠️ Características técnicas
+
+- **Geometría**: 
+  - Sustrato de silicio inicial (cubo 2x2x2 μm)
+  - Elipsoides concéntricos (outer: 0.5×0.5×0.25 μm, inner: 0.4×0.4×0.15 μm)
+  - Patrón replicado 82 veces con offset de 0.1 μm
+
+- **Materiales**:
+  - Silicio (sustrato)
+  - Polymer (estructura intermedia)
+  - SiO₂ (estructura interna)
+
+- **Parámetros de malla**:
+  - Refinamiento Delaunay
+  - Tamaño máximo: 6.05 nm
+  - Tamaño máximo en interfaces: 0.05 nm
+  - Gradación cuadrática
+
+- **Dopaje**:
+  - Fósforo constante: 1×10¹⁵ cm⁻³ en silicio
+
+## 📋 Estructura del código
+
+```plaintext
+1. Configuración inicial
+2. Creación de geometrías base
+   - Sustrato de silicio
+   - Elipsoides concéntricos
+3. Operaciones booleanas
+   - Combinación de geometrías
+   - Extracción de perfiles
+4. Replicación del patrón
+5. Refinamiento de malla
+6. Asignación de dopaje
+7. Visualización
+```
+
+## 🔧 1. Configuración inicial
+
+- Se especifica el uso del módulo `Victory Mesh`.
+- Se establece el nombre del ejemplo:
+  
+```tcl
+SET name="Wt_Solid_Model_ex09"
+```
+
+---
+
+## 🧱 2. Creación del sustrato
+
+- Se define una caja de silicio como base (sustrato):
+
+```tcl
+UBODI from="-1,-1,-1" to="1,1,1" material="silicon" out="substrate"
+SKELETON
+```
+
+---
+
+## 🎯 3. Geometría escalonada (Scallop)
+
+### 3.1. Elipsoide exterior
+
+- Polímero con forma de elipsoide:
+
+```tcl
+ELLIPSODI center="0,0,0" radius.x=0.5 radius.y=0.5 radius.z=0.25 num.edges=32 material="polymer" out="outer_ellipsoid"
+SKELETON
+SPLICE regions="polymer" material="silicon"
+```
+
+### 3.2. Elipsoide interior
+
+- Más pequeña y de SiO₂:
+
+```tcl
+ELLIPSODI center="0,0,0" radius.x=0.4 radius.y=0.4 radius.z=0.15 num.edges=32 material="sio2" out="inner_ellipsoid"
+SKELETON
+SPLICE regions="sio2" material="polymer"
+```
+
+### 3.3. Combinación de formas
+
+```tcl
+COMBINE in a="outer_ellipsoid" in b="inner_ellipsoid" out="base"
+```
+
+---
+
+## 🧩 4. Creación de patrón tipo trinchera
+
+### 4.1. Recorte de celda base
+
+```tcl
+CRDP from="1,-1,-0.1" to="1,1,0.5"
+```
+
+### 4.2. Replicación de patrón
+
+```tcl
+WIREOR axes="-822" offset="0.1" out="trench"
+```
+
+### 4.3. Limpieza y reducción de dominio
+
+```tcl
+MERGE
+CRDP from="0" to="1" out="rie"
+```
+
+---
+
+## 🕸️ 5. Generación y refinamiento de la malla
+
+```tcl
+RERESH delaunay out="rie_delaunay"
+REFINE max_size=6.05
+REFINE max_interface_size=0.05 regions="silicon, size" interface.regions="polymer" grading="quadratic"
+```
+
+- Se utiliza la triangulación de Delaunay.
+- Refinamiento global y en interfaces con gradiente cuadrático.
+
+---
+
+## 🧪 6. Dopaje
+
+```tcl
+FIELD constant regions="silicon" name="phosphorus" value=1e15
+```
+
+- Se aplica dopaje constante con fósforo tipo n a la región de silicio.
+
+---
+
+## 💾 7. Guardado y visualización
+
+```tcl
+SAVE out="$'name'_VM_0"
+victoryvisual $'name'_VM_0.str:$'name'_VM_0.set
+OUTT
+```
+
+- Se guarda la estructura mallada y se abre en Victory Visual.
+
+---
+
+## 📌 Resumen
+
+Este script:
+
+- Crea un sustrato de silicio.
+- Superpone estructuras elipsoidales escalonadas (scallop) de distintos materiales.
+- Repite el patrón para generar una trinchera RIE escalonada.
+- Aplica mallado adaptativo refinado y dopaje.
+- Exporta la estructura para simulaciones posteriores.
+
+> **Aplicaciones típicas**: Diseño de MEMS, cavidades resonantes, DRIE, sensores o estructuras de grabado anisotrópico.
+
+---
+
+## 📷 Vista previa 
+<img width="591" height="471" alt="image" src="https://github.com/user-attachments/assets/2bfe7004-dc7e-40a1-8d29-4f620d1b1009" />
