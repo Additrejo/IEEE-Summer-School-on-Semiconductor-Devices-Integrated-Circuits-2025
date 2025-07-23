@@ -7,6 +7,9 @@ Este repositorio contiene archivos y ejemplos desarrollados durante mi formació
 - [Analog/Digital IC Design with Open Source Tools  ](https://github.com/Additrejo/IEEE-Summer-School-on-Semiconductor-Devices-Integrated-Circuits-2025/tree/main/Analog-Digital%20IC%20Design%20with%20Open%20Source%20Tools)  
 - [Requisitos](#requisitos)  
 - [Instalación y configuración de máquina virtual](#-instalación-y-configuración-de-máquina-virtual.)  
+- [Configurar la máquina virtual con el PDK SKY 130](#-configurar-la-máquina-virtual-con-el-pdk-sky-130.)  
+
+
 ---
 
 ## Requisitos
@@ -45,6 +48,29 @@ y seguir las instrucciones del instalador.
 - Esto te permitirá experimentar con diferentes sistemas de forma segura y sin afectar tu computadora principal.  
 
 ## CONFIGURAR LA MÁQUINA VIRTUAL CON EL PDK SKY 130
+Ahora crearemos el entorno de desarrollo para poder usar las herramientas de ElectroTlalli.  
+
+1. En VirtualBox añadimos una nueva máquina virtual.  
+2. Poner un nombre por ejemplo: "ElectroTlalli".
+3. En Tipo elegimos: **Linux**
+4. la versión: **Red Hat 7.x(64-bit)**
+Lo demás dejarlo todo como está.  
+
+<img width="795" height="375" alt="image" src="https://github.com/user-attachments/assets/d330037d-09bf-4f1b-a3ec-2ed493e45ce7" />  
+
+Ahora, establece la cantidad de memoria RAMy procesadores que usará la máquina virtual. Ten en cuenta que
+estos recursos estarán limitados por los recursos disponibles en tu computadora. Más memoria RAM y CPU
+permitirán que la máquina virtual funcione mejor, pero podría afectar el rendimiento de tu sistema principal
+(Windows). Elige los valores según tus recursos y haz clic en Next.  
+
+<img width="795" height="376" alt="image" src="https://github.com/user-attachments/assets/82a198d6-bd91-4c2c-bc3a-ed3317ed1ac2" />
+
+A continuación, debes seleccionar el disco duro donde se instalará el sistema operativo y las herramientas. Si
+tienes el archivo ElectroTlalli.zip, descomprímelo y obtendrás un archivo llamado ElectroTlalli.vdi, que es el
+disco virtual con el sistema operativo y las herramientas instaladas. En la ventana de configuración, selecciona
+Use an Existing Virtual Hard Disk File (Usar un Archivo de Disco Duro Virtual Existente) y elige la ubicación del
+archivo ElectroTlalli.vdi. Haz clic en Next.
+
 
 
 
