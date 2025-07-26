@@ -13,11 +13,35 @@ Este repositorio contiene archivos y ejemplos desarrollados durante mi formació
 ---
 
 ## Requisitos
+Para disfrutar de una experiencia fluida, necesitarás asegurarte de que tu computadora tenga suficientes recursos, como 
+procesador, memoria RAMy espacio de almacenamiento.  
+Esto es importante para que tanto el sistema operativo principal de tu computadora (el anfitrión) como los sistemas operativos virtuales (los invitados) puedan funcionar sin problemas.  
+Por ejemplo, si deseas virtualizar Ubuntu (un sistema operativo de Linux) y tienes menos de 6 GB de RAM, es posible  
+que no funcione muy bien, ya que Canonical (la empresa detrás de Ubuntu) recomienda almenos 4 GB de RAM para  la última versión de su sistema operativo.  
+Lo mismo ocurre con el procesador, cuanto más nuevo y potente sea, mejor.  
+Los requisitos mínimos para utilizar VirtualBox son: Un procesador X86 (32 bits) con soporte de virtualización, o si tienes un procesador X86-64 (64 bits), será aún mejor.  
+Memoria RAM: La cantidad necesaria dependerá del sistema operativo que desees virtualizar, pero tener al  menos 8 GB sería un buen punto de partida.  
+Espacio de almacenamiento: La instalación de VirtualBox ocupa aproximadamente 250 MB, pero cada sistema operativo virtualizado requerirá al menos 10 GB de espacio en disco.  
+Puedes comenzar con un disco duro tradicional, aunque lo ideal sería tener uno de estado sólido (SSD) para obtener un mejor rendimiento.  
+Asegurarte de cumplir con estos requisitos te permitirá disfrutar de una experienciamás fluida y satisfactoria al utilizar  
+máquinas virtuales con VirtualBox.  
 
+## ¿Qué es VirtualBox?  
+VirtualBox es una aplicación que te permite crear máquinas virtuales, que son como computadoras simuladas dentro
+de tu propia computadora.  Con estasmáquinas virtuales, puedes instalar diferentes sistemas operativos sin afectar tu
+computadora principal.  Es como tener varias computadoras en una sola.  
+El proceso es sencillo: instalas VirtualBox en tu computadora (que sería el anfitrión), y luego creas una o más máquinas
+virtuales (los invitados) dentro de él.  Cada máquina virtual puede ejecutar un sistema operativo diferente, como
+Linux, Solaris, macOS, BSD, IBM OS/2 o Windows.  Lo mejor es que los datos de tu computadora principal están protegidos,
+ya que cada máquina virtual funciona de manera aislada.  
+Con esto, puedes probar nuevos sistemas operativos, aplicaciones o configuraciones sin poner en riesgo los datos importantes
+de tu computadora principal.  Es una forma segura y práctica de experimentar y aprender sobre diferentes
+sistemas sin afectar tu entorno principal.
+
+
+## DESCARGAR E INSTALAR VIRTUALBOX  
 Cómo primer paso es necesario instalar una máquina virtual para poder ejecutar Electro Tlalli, en este caso usaremos VirtualBox.  
 [Virtualbox](https://www.virtualbox.org/)   
-
-## Instalación y configuración de máquina virtual
 
 ### VirtualBox  
 - Dirigirse a la página de descarga de [Virtualbox](https://www.virtualbox.org/)  y descargar.  
@@ -26,7 +50,8 @@ Cómo primer paso es necesario instalar una máquina virtual para poder ejecutar
 - Instalar en PC.  
  <img width="497" height="389" alt="image" src="https://github.com/user-attachments/assets/4758b9c7-435e-4730-8030-2a31d2d23f8e" />
 
-- **Instalar el paquete Extension Pack**  
+## INSTALAR EL PAQUETE EXTENSION PACK
+
 <img width="627" height="114" alt="image" src="https://github.com/user-attachments/assets/2c8f975b-7f89-49c9-a19f-e31920656ec4" />  
 <img width="451" height="257" alt="image" src="https://github.com/user-attachments/assets/52e39425-7184-4fe6-951f-d1be0e11e3d4" />  
 
@@ -69,14 +94,48 @@ A continuación, debes seleccionar el disco duro donde se instalará el sistema 
 tienes el archivo ElectroTlalli.zip, descomprímelo y obtendrás un archivo llamado ElectroTlalli.vdi, que es el
 disco virtual con el sistema operativo y las herramientas instaladas. En la ventana de configuración, selecciona
 Use an Existing Virtual Hard Disk File (Usar un Archivo de Disco Duro Virtual Existente) y elige la ubicación del
-archivo ElectroTlalli.vdi. Haz clic en Next.
+archivo ElectroTlalli.vdi. Haz clic en Next.  
 
+<img width="793" height="373" alt="image" src="https://github.com/user-attachments/assets/dcb7a1b0-9b00-4f99-88e9-962e9686d717" />
 
+Verás un resumen de la configuración de la máquina virtual. Haz clic en Terminar.  
+<img width="796" height="377" alt="image" src="https://github.com/user-attachments/assets/fb3d5a4f-a252-49d2-8670-610f28ef15e8" />  
 
+Regresarás a la ventana principal de VirtualBox, donde verás la máquina virtual que creaste. Antes de iniciarla,
+haz clic en el botón de Configuración.  
+<img width="814" height="403" alt="image" src="https://github.com/user-attachments/assets/cc465caa-a377-4b8d-b840-aa0fa29139fb" />  
 
-Todo está listo para empezar a trabajar.
+Se abrirá una nueva ventana. Ve a la pestaña Avanzado y en la sección Compartir portapapeles, selecciona Bidireccional.
+También en la sección Arrastrar y soltar, selecciona Bidireccional.   
+<img width="720" height="486" alt="image" src="https://github.com/user-attachments/assets/8c7ee427-345d-4a08-8447-0d64f35fa892" />
+
+Luego, haz clic en el botón Carpetas compartidas. Aquí puedes agregar carpetas de tu sistema Windows. Esto
+permitirá ingresar o extraer archivos hacia y desde la máquina virtual. Configura las carpetas que desees y haz
+clic en Aceptar.  
+<img width="728" height="490" alt="image" src="https://github.com/user-attachments/assets/83577dce-26b3-4d74-817d-e091d221c83d" />  
+
+¡Listo! Con esto, has configurado tu máquina virtual. Ahora puedes iniciarla y acceder a las herramientas opensource
+que contiene. Disfruta de tu experiencia virtual.
+
+## ABRIR LA MAQUINA CON LAS HERRAMIENTAS OPENSOURCE VIRTUALBOX  
+Para abrir la máquina virtual con las herramientas opensource en VirtualBox, sigue estos sencillos pasos:  
+1. Abre VirtualBox y selecciona la máquina virtual que configuramos en los pasos anteriores. Luego, haz clic en el
+icono Iniciar que está en la esquina superior derecha del menú.  
+<img width="811" height="400" alt="image" src="https://github.com/user-attachments/assets/c0c5aae9-1077-4ebc-b901-436a2d809cee" />  
+
+2. Una vez que inicies la máquina virtual, te pedirá una contraseña. Ingresa el password Tlalli.2025 y presiona
+Enter.
+
+<img width="796" height="670" alt="image" src="https://github.com/user-attachments/assets/b51da1e0-63b7-421e-9754-30da64426071" />  
+
+¡Listo! Si ingresaste correctamente la contraseña, tendrás acceso a la máquina virtual y podrás utilizar las herramientas
+opensource que contiene. Ahora puedes comenzar a trabajar en tu máquina virtual.
+
+<img width="1361" height="724" alt="image" src="https://github.com/user-attachments/assets/7ed9e4bf-c390-4b8d-b967-6ad85bdebd2e" />
+
 
 ---
 
 # [Electro Tlalli](https://github.com/Additrejo/IEEE-Summer-School-on-Semiconductor-Devices-Integrated-Circuits-2025/blob/main/Introduction%20to%20Silvaco%20TCAD/Silvaco_Doping_dependent_oxidation.tcl)  
 [Imagen]
+
