@@ -137,5 +137,35 @@ opensource que contiene. Ahora puedes comenzar a trabajar en tu máquina virtual
 ---
 
 # [Electro Tlalli](https://github.com/Additrejo/IEEE-Summer-School-on-Semiconductor-Devices-Integrated-Circuits-2025/blob/main/Introduction%20to%20Silvaco%20TCAD/Silvaco_Doping_dependent_oxidation.tcl)  
-[Imagen]
 
+Para iniciar, crearemos un common-source amplifier usando Electro Tlalli.
+
+Dentro de Electro Tlalli abrimermos la terminal y agregaremos los siguiente comandos. 
+```bash
+csh
+```
+```bash
+source start_sky130
+```
+Nos pedirá la contraseña la cual es: 
+```bash
+Tlalli.2025
+```
+<img width="734" height="91" alt="image" src="https://github.com/user-attachments/assets/faaca0b7-be34-4213-aaef-903af295b996" />
+
+Se ejecutara el comando y presionaremos "s" para iniciar.  
+Se abrirá una segunda terminal con la dirección:
+```bash
+/foss/designs >
+```
+<img width="1013" height="533" alt="image" src="https://github.com/user-attachments/assets/7e93e7d1-10dc-431e-acd0-4a68231076d6" />
+
+ejecutaremos un nuevo comando en la nueva terminal.
+```bash
+xschem &
+```
+Se ejecutará la ventana xschem - top.sch
+<img width="1363" height="602" alt="image" src="https://github.com/user-attachments/assets/fa2619bc-5170-4935-919d-a081d2273375" />  
+
+Agregaremos un nuevo schematico dando click en "+".  
+<img width="206" height="97" alt="image" src="https://github.com/user-attachments/assets/26610807-a876-45b5-a90e-cc8ec00b93bd" />  
