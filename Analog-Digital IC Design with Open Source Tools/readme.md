@@ -1,15 +1,17 @@
-## Analog/Digital IC Design with Open Source Tools  
-[imagen software]  
+## Analog/Digital IC Design with Open Source Tools    
+<img width="1012" height="488" alt="image" src="https://github.com/user-attachments/assets/a6337475-a7b4-4ec6-a2eb-3a9d6296131f" />
+
 Este repositorio contiene archivos y ejemplos desarrollados durante mi formación introductoria en el diseño de circuitos integrados (CI) analógicos y digitales utilizando Electro Tlalli, un entorno de diseño electrónico de código abierto enfocado en la educación e investigación. El flujo de diseño se basa en el PDK SKY130 (Process Design Kit), un proceso de 130 nm de código abierto desarrollado por SkyWater Technology. Electro Tlalli integra herramientas como Xschem para el diseño esquemático, Ngspice para simulaciones, Magic VLSI para el diseño físico (layout), Netgen para verificación LVS y OpenLane para la síntesis y diseño digital. A través de este entorno, exploré el ciclo completo de diseño de CI, desde el diseño analógico a nivel de transistores hasta el flujo digital RTL a GDSII, adquiriendo experiencia práctica en verificación de reglas de diseño (DRC), comparación esquema-vs-layout (LVS), extracción de parásitos y preparación para tape-out. Este repositorio documenta mi proceso de aprendizaje y sirve como referencia para futuros desarrollos de silicio abierto.  
 
 ## 📑 Índice
 
 - [Analog/Digital IC Design with Open Source Tools  ](https://github.com/Additrejo/IEEE-Summer-School-on-Semiconductor-Devices-Integrated-Circuits-2025/tree/main/Analog-Digital%20IC%20Design%20with%20Open%20Source%20Tools)  
-- [Requisitos](#requisitos)  
-- [Instalación y configuración de máquina virtual](#-instalación-y-configuración-de-máquina-virtual.)  
-- [Configurar la máquina virtual con el PDK SKY 130](#-configurar-la-máquina-virtual-con-el-pdk-sky-130.)  
-
-
+- [Requisitos](#requisitos)
+- [¿Qué es virtualBox?](#qué-es-virtualbox)
+- [DESCARGAR E INSTALAR VIRTUALBOX](#descargar-e-instalar-virtualbox)
+- [INSTALAR EL PAQUETE EXTENSION PACK](#instalar-el-paquete-extension-pack)
+- [CONFIGURAR LA MÁQUINA VIRTUAL CON EL PDK SKY130](#configurar-la-máquina-virtual-con-el-pdk-sky130)
+- [ABRIR LA MÁQUINA CON LAS HERRAMIENTAS OPENSOURCE VIRTUALBOX](#abrir-la-máquina-con-las-herramientas-opensource-virtualbox)
 ---
 
 ## Requisitos
@@ -72,7 +74,7 @@ y seguir las instrucciones del instalador.
 - Con estos pasos, tu instalación de VirtualBox estará lista para empezar a virtualizar otros sistemas operativos enWindows. 
 - Esto te permitirá experimentar con diferentes sistemas de forma segura y sin afectar tu computadora principal.  
 
-## CONFIGURAR LA MÁQUINA VIRTUAL CON EL PDK SKY 130
+## CONFIGURAR LA MÁQUINA VIRTUAL CON EL PDK SKY130
 Ahora crearemos el entorno de desarrollo para poder usar las herramientas de ElectroTlalli.  
 
 1. En VirtualBox añadimos una nueva máquina virtual.  
@@ -117,7 +119,7 @@ clic en Aceptar.
 ¡Listo! Con esto, has configurado tu máquina virtual. Ahora puedes iniciarla y acceder a las herramientas opensource
 que contiene. Disfruta de tu experiencia virtual.
 
-## ABRIR LA MAQUINA CON LAS HERRAMIENTAS OPENSOURCE VIRTUALBOX  
+## ABRIR LA MÁQUINA CON LAS HERRAMIENTAS OPENSOURCE VIRTUALBOX  
 Para abrir la máquina virtual con las herramientas opensource en VirtualBox, sigue estos sencillos pasos:  
 1. Abre VirtualBox y selecciona la máquina virtual que configuramos en los pasos anteriores. Luego, haz clic en el
 icono Iniciar que está en la esquina superior derecha del menú.  
@@ -164,8 +166,49 @@ ejecutaremos un nuevo comando en la nueva terminal.
 ```bash
 xschem &
 ```
+<img width="338" height="97" alt="image" src="https://github.com/user-attachments/assets/ec6ede56-72a9-4a02-b0ca-d1ec6cc591e8" />  
+
 Se ejecutará la ventana xschem - top.sch
 <img width="1363" height="602" alt="image" src="https://github.com/user-attachments/assets/fa2619bc-5170-4935-919d-a081d2273375" />  
 
+## Diseño de circuito
+
 Agregaremos un nuevo schematico dando click en "+".  
 <img width="206" height="97" alt="image" src="https://github.com/user-attachments/assets/26610807-a876-45b5-a90e-cc8ec00b93bd" />  
+
+para acceder a todos los componentes de nuestro circuito es necesario ir a **Tools > insert symbol** el cual abrirá un ventana llamada **"Choose symbol"**
+elegiremos la casilla **Search** para mayor facilidad, la lista de componentes son los siguientes:
+
+<img width="668" height="394" alt="image" src="https://github.com/user-attachments/assets/23716fe3-0234-4cb3-a2b0-07fb0bab11bf" />  
+
+- Componentes:  
+  - nfet_01V8.sym  
+  - res_high_po_0p35.sym  (resistor)
+
+- Terminales:  
+  - ipin.sym
+  - opin.sym
+  - iopin.sym
+  - Gnd.sym
+
+# Atajos  
+Click en el nodo + w:      cable de conexión.  
+Doble click:               nombrar componente.  
+f:                          centrar esquematico.  
+click sobre componente + q: editar propiedades.
+
+# Armar circuito.
+
+Armar el siguiente circuito con los componentes mencionados anteriormente.  
+<img width="496" height="473" alt="image" src="https://github.com/user-attachments/assets/d2405496-3e14-4f98-a812-66d891f996d7" />
+
+**Cambiar los valores del transistor**  
+Doble click y agregar los siguientes valores:  
+w=5.59  
+l=0.3  
+<img width="502" height="184" alt="image" src="https://github.com/user-attachments/assets/70b397e9-82ab-4ee4-82b8-186ed6732937" />  
+
+**Nota: Guardar constantemente los cambios.
+
+# Diseño de símbolo.  
+Abrir otro ventana
